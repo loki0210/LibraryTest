@@ -7,6 +7,9 @@ import android.support.test.runner.AndroidJUnit4;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import static org.junit.Assert.*;
 
 /**
@@ -23,4 +26,5 @@ public class ExampleInstrumentedTest {
 
         assertEquals("zihuatanejo.ooo.librarytest", appContext.getPackageName());
     }
+
 }
