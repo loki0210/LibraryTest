@@ -25,40 +25,4 @@ public class MemoryCache implements ImageCache {
     public void put(String url, Bitmap bmp) {
         mMemoryCache.put(url, bmp);
     }
-
-    //SD卡缓存DiskCache类
-    public class DiskCache implements ImageCache {
-        @Override
-        public Bitmap get(String url) {
-            return null; //从本地读取该图片
-        }
-
-        @Override
-        public void put(String url, Bitmap bmp) {
-
-        }
-    }
-    //双缓存
-
-    public class DoubleCache implements ImageCache {
-        ImageCache memoryCache = new MemoryCache();
-        ImageCache mDiskCache = new DiskCache();
-
-        //先从内存缓存获取，若是没有再从sd
-        @Override
-        public Bitmap get(String url) {
-            Bitmap bitmap = memoryCache.get(url);
-            if (bitmap == null) {
-                bitmap = mDiskCache.get(url);
-            }
-            return bitmap;
-        }
-
-        //将图片缓存到sd卡中
-        @Override
-        public void put(String url, Bitmap bmp) {
-            mDiskCache.put(url, bmp);
-            mDiskCache.put(url, bmp);
-        }
-    }
 }
